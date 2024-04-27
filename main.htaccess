@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Redirect all requests to index.php except for public directory
+RewriteCond %{REQUEST_URI} !^/public(/.*|)$ [OR]
+RewriteCond %{REQUEST_URI} ^/index\.php$
+RewriteRule ^(.*)$ index.php [L]
