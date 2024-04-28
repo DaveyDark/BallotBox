@@ -1,0 +1,49 @@
+:root {
+    --primary: #43496b;
+    --secondary: #fff7e5;
+    --tertiary: #dd3424;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.nav-logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 28px;
+    line-height: 0px;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 2rem;
+    line-height: 0px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.2rem;
+}
+
+input {
+    color: var(--secondary);
+}
+
+input:focus {
+    outline: none;
+}

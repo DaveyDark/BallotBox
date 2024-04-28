@@ -28,8 +28,11 @@ CREATE TABLE IF NOT EXISTS ballots (
 CREATE TABLE IF NOT EXISTS votes (
   id INT PRIMARY KEY AUTO_INCREMENT,
   ballot_id INT NOT NULL,
+  box_id INT NOT NULL,
   user_id INT NOT NULL,
+  rank INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (ballot_id) REFERENCES ballots(id),
+  FOREIGN KEY (box_id) REFERENCES boxes(id),
   FOREIGN KEY (user_id) REFERENCES users(id)
 );

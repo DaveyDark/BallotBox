@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    padding-top: 5rem;
+}
+
+#platform-description, #purpose {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+#team {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 300px;
+    margin: 1rem 2rem;
+}
+
+
+#team {
+    padding-bottom: 40px;
+}
+
+.members {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.team-member {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.team-member h3 {
+    margin: 0;
+    color: #333;
+}
+
+.team-member p {
+    margin: 5px 1rem;
+    color: #666;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #302f49;
+    padding: 40px 80px;
+}
+
+footer .copy {
+    color: #fff;
+}
+
+hr {
+    margin: 20px 5rem;
+    border: none;
+    border-top: 1px solid #aaa;
+}

@@ -7,6 +7,9 @@ try {
   $sql = $pdo->prepare('DROP DATABASE IF EXISTS ballot_box;');
   $sql->execute();
 
+  $sql = $pdo->prepare('CREATE DATABASE ballot_box;');
+  $sql->execute();
+
   echo "Database wiped\n";
 } catch (PDOException $e) {
   die("DB ERROR: " . $e->getMessage());

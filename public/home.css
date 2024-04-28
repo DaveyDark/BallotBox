@@ -1,0 +1,66 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    background: var(--primary);
+    padding: 5rem;
+    border-radius: 25px;
+    gap: 5rem;
+    align-items: center;
+}
+
+.create-cont {
+    background: var(--secondary);
+    aspect-ratio: 1;
+    padding: 2rem;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--primary);
+    cursor: pointer;
+}
+.polls {
+    height: 100%;
+    color: var(--secondary);
+    padding: 2rem;
+    border: 2px solid var(--secondary);
+    border-radius: 25px;
+}
+.poll-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    line-height: 0;
+    background: var(--secondary);
+    color: var(--primary);
+    border-radius: 25px;
+    text-decoration: none;
+}
+.poll-item h2 {
+    cursor: pointer;
+}
+.poll-item h2:hover {
+    text-decoration: underline;
+}
+.poll-item button {
+    background: var(--tertiary);
+    margin-left: 2rem;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    border: none;
+    color: var(--secondary);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.poll-item button:hover {
+    transform: scale(1.05);
+}

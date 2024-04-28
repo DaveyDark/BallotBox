@@ -10,14 +10,14 @@ try {
 
   echo "Database created successfully\n";
 
-  // $sampleDataFile = __DIR__ . '/sample.sql';
-  // $sql = file_get_contents($sampleDataFile);
+  $sampleDataFile = __DIR__ . '/sample.sql';
+  $sql = file_get_contents($sampleDataFile);
 
   // $dataFile = __DIR__ . '/data.sql';
   // $sql .= file_get_contents($dataFile);
 
-  // $pdo->exec($sql);
-  // echo "Data added successfully\n";
+  $pdo->exec($sql);
+  echo "Data added successfully\n";
 } catch (PDOException $e) {
   die("DB ERROR: " . $e->getMessage());
 }

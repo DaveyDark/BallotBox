@@ -1,78 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="pollstyle.css">
-    
+    <title>BallotBox - Poll</title>
+    <link rel="stylesheet" href="/public/global.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="/public/votestyle.css">
 </head>
+
 <body>
-    <h2>Create Poll</h2>
+    <?php
+    require_once __DIR__ . '/navbar.php';
+    require_once 'includes/dbh.inc.php';
+    require_once 'includes/tideman.inc.php';
+    if(!isset($_GET['poll'])){
+        header('Location: /');
+        exit();
+    }
+    $poll_id = $_GET['poll'];
+    $poll = getPoll($pdo, $poll_id);
+    if(!$poll){
+        header('Location: /');
+        exit();
+    }
+    $options = getBallots($pdo, $poll_id);
+    $votes = countVotes($pdo, $poll_id);
+    if ($votes == 0) {
+        $winner = null;
+    } else {
+        $winner = calculateWinningBallot($pdo, $poll_id);
+    }
+    ?>
     <div id="poll-container">
-        <div class="title-container">
-            <label for="poll-title">Title</label><br>
-            <input type="text" id="poll-title">
-        </div>
-        
-        <div id="options-container">
-            <div class="option-item">
-                <input type="text" class="option-input">
-                <button class="remove-option">X</button>
-            </div>
-            <!-- <div id="buttons"> -->
-                <button id="add-option">Add Option</button>
-        <button id="submit-poll">Submit</button>
-            <!-- </div> -->
-        </div>
-        
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const addOptionButton = document.getElementById('add-option');
-            const submitButton = document.getElementById('submit-poll');
-        
-            addOptionButton.addEventListener('click', function() {
-                const optionsContainer = document.getElementById('options-container');
-                const newOptionItem = document.createElement('div');
-                newOptionItem.classList.add('option-item');
-                newOptionItem.innerHTML = `
-                    <input type="text" class="option-input">
-                    <button class="remove-option">X</button>
-                `;
-                optionsContainer.appendChild(newOptionItem);
-                attachRemoveOptionListener(newOptionItem);
-            });
-        
-            function attachRemoveOptionListener(optionItem) {
-                const removeButton = optionItem.querySelector('.remove-option');
-                removeButton.addEventListener('click', function() {
-                    optionItem.remove();
-                });
-            }
-        
-            submitButton.addEventListener('click', function() {
-                const pollTitle = document.getElementById('poll-title').value;
-                const options = [];
-                const optionInputs = document.querySelectorAll('.option-input');
-                optionInputs.forEach(function(input) {
-                    if (input.value.trim() !== '') {
-                        options.push(input.value.trim());
-                    }
-                });
-        
-                if (pollTitle.trim() === '' || options.length < 2) {
-                    alert('Please provide a title and at least two options for the poll.');
-                    return;
+        <h2>
+            <?= $poll['name'] ?>
+        </h2>
+        <div class="winner-div">
+            <h3>Winner</h3>
+            <p>
+                <?php
+                if ($winner == null) {
+                    echo 'No votes yet';
+                } else {
+                echo getBallotById($pdo, $winner)['name'];
                 }
-        
-                // Here you can send the poll title and options to your server-side script for further processing
-                console.log('Poll Title:', pollTitle);
-                console.log('Options:', options);
-                // Replace the console.log with your code to send data to the server
-            });
-        });
-        </script>
-        
+                ?>
+            </p>
+        </div>
+        <div id="options-container">
+            <?php
+            foreach ($options as $option) {
+                echo '<div class="option-item">';
+                echo '<input disabled type="text" ballot=' . $option['id'] . ' class="option-input" value="' . $option['name'] . '">';
+                echo '</div>';
+            }
+            ?>
+        </div>
+        </div>
+    <script>
+        feather.replace();
+    </script>
+
 </body>
+
 </html>
