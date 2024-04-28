@@ -12,15 +12,15 @@ switch ($request) {
     // Main pages
   case '':
   case '/':
-    require $pageDir . 'round1_ar.php';
+    require $pageDir . 'index.php';
     break;
-  case 'login':
+  case '/login':
     require $pageDir . 'login.php';
     break;
-  case 'signup':
+  case '/signup':
     require $pageDir . 'signup.php';
     break;
-      
+
   default:
     http_response_code(404);
     echo $request;
