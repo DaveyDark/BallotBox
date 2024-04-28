@@ -10,7 +10,7 @@
 <body>
     <div class="form-container">
         <h1>Welcome</h1>
-        <p id="signup-ref">Already have an account? <a href="login.html">Login</a></p>
+        <p id="signup-ref">Already have an account? <a href="/login">Login</a></p>
         <form method="POST" action="/api/login">
             <input class="inpname" type="text" placeholder="Name" id="email">
             <input class="inp1" type="email" placeholder="E-Mail" id="email" ><br>

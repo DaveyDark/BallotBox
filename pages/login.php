@@ -9,7 +9,7 @@
 <body>
     <div class="form-container">
         <h1>Welcome</h1>
-        <p id="signup-ref">Don't have an account? <a href="signup.html">Sign Up</a></p>
+        <p id="signup-ref">Don't have an account? <a href="/signup">Sign Up</a></p>
         <form method="POST" action="/api/login">
             <input class="inp1" type="email" placeholder="E-Mail" id="email"><br>
             <div class="password-container"><input class="inp2" type="password" placeholder="Password"><i data-feather="eye" id="password"></i><br></div>

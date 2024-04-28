@@ -20,6 +20,9 @@ switch ($request) {
   case '/signup':
     require $pageDir . 'signup.php';
     break;
+  case '/poll':
+    require $pageDir . 'poll.php';
+    break;
 
   default:
     http_response_code(404);
