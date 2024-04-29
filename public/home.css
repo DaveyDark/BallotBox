@@ -4,11 +4,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--secondary);
 }
 
 main {
     display: flex;
     background: var(--primary);
+    margin-top: 5rem;
     padding: 5rem;
     border-radius: 25px;
     gap: 5rem;
@@ -34,9 +36,14 @@ main {
     border: 2px solid var(--secondary);
     border-radius: 25px;
 }
+.polls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 .poll-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 1rem 2rem;
     line-height: 0;
@@ -44,6 +51,7 @@ main {
     color: var(--primary);
     border-radius: 25px;
     text-decoration: none;
+    position: relative;
 }
 .poll-item h2 {
     cursor: pointer;
@@ -52,14 +60,20 @@ main {
     text-decoration: underline;
 }
 .poll-item button {
-    background: var(--tertiary);
     margin-left: 2rem;
+    background: var(--tertiary);
     border-radius: 25px;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.5rem;
     border: none;
     color: var(--secondary);
     cursor: pointer;
     transition: transform 0.2s;
+}
+.delete-button {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    aspect-ratio: 1;
 }
 .poll-item button:hover {
     transform: scale(1.05);

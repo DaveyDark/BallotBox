@@ -13,12 +13,9 @@
 </head>
 
 <body>
-<nav>
-    <div class="nav-logo" onclick="window.location.href = '/'">
-        <i data-feather="layers"></i>
-        <p>BallotBox</p>
-    </div>
-</nav>
+<?php
+require_once __DIR__ . '/navbar.php';
+?>
   <main>
     <div class="intro">
       <h1>Ballot Box</h1>

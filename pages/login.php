@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/global.css">
     <link rel="stylesheet" href="/public/style.css">
-    <title>Document</title>
+    <title>BallotBox - Login</title>
 </head>
 
 <body>
     <div class="form-container">
         <h1>Welcome</h1>
         <p id="signup-ref">Don't have an account? <a href="/signup">Sign Up</a></p>
+        <?php
+        if (isset($_GET['error'])) {
+            echo '<p class="error">An error occurred: ' . $_GET['error'] . '</p>';
+        }
+        ?>
         <form method="POST" action="/api/login">
             <input class="inp1" type="email" placeholder="E-Mail" id="email" name="email"><br>
             <div class="password-container">

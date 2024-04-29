@@ -44,3 +44,11 @@ function countVotes($pdo, $box) {
   $stmt->execute();
   return $stmt->fetchColumn();
 }
+
+function hasVoted($pdo, $box, $user) {
+  $stmt = $pdo->prepare("SELECT COUNT(*) FROM votes WHERE box_id = :box_id AND user_id = :user_id");
+  $stmt->bindParam(':box_id', $box);
+  $stmt->bindParam(':user_id', $user);
+  $stmt->execute();
+  return $stmt->fetchColumn() > 0;
+}

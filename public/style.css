@@ -27,19 +27,13 @@ body{
 .password-container{
     position: relative;
 }
-#password{
-    position:absolute;
-    right: 0;
-    z-index: 10;
-    color: #ddd;
-}
 #signup-ref{
     color: #fff7e5;
     font-size: 1.25rem;
 }
 
 #signup-ref a{
-    color: #dd3424;
+    color: var(--secondary);
     text-align: center;
     font-weight:900
 }
@@ -100,4 +94,10 @@ body{
     color: #dd3424;
     border: 2px solid #dd3424 ;
     font-size: 1.05rem;
+}
+.error {
+    color: var(--tertiary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
 }

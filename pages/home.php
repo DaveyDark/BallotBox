@@ -32,12 +32,33 @@
                     echo '<div class="poll-item">';
                     echo '<h3 onclick="window.location.href=`/poll?poll=' . $poll['id'] . '`">' . $poll['name'] . '</h3>';
                     echo '<button onclick=\'navigator.clipboard.writeText(window.location.origin + "/vote?poll=' . $poll['id'] . '");\'> Copy Link </button>';
+                    echo '<button class="delete-button" pollid='. $poll['id'] .'> <i height=10 width=10 data-feather="minus"></i> </button>';
                     echo '</div>';
                 }
                 ?>
             </div>
     </main>
     <script>
+        const deleteButtons = document.querySelectorAll('.delete-button');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const poll_id = e.target.getAttribute('pollid');
+                const response = await fetch('/api/delete-poll', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        poll_id
+                    })
+                });
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to delete poll');
+                }
+            });
+        });
         feather.replace();
     </script>
 </body>

@@ -12,19 +12,31 @@ switch ($request) {
   // Main pages
   case '':
   case '/':
+    require $pageDir . 'index.php';
+    break;
+  case '/home':
     if (isset($_SESSION['user_id'])) {
       require $pageDir . 'home.php';
     } else {
-      require $pageDir . 'index.php';
+      header('Location: /login');
+      die();
     }
     break;
   case '/about':
     require $pageDir . 'about.php';
     break;
   case '/login':
+    if (isset($_SESSION['user_id'])) {
+      header('Location: /home');
+      die();
+    }
     require $pageDir . 'login.php';
     break;
   case '/signup':
+    if (isset($_SESSION['user_id'])) {
+      header('Location: /home');
+      die();
+    }
     require $pageDir . 'signup.php';
     break;
   case '/create-poll':
@@ -53,6 +65,9 @@ switch ($request) {
     break;
   case '/api/vote':
     require $apiDir . 'vote.php';
+    break;
+  case '/api/delete-poll':
+    require $apiDir . 'delete_poll.php';
     break;
   case '/logout':
     session_destroy();

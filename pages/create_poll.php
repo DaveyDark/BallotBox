@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BallotBox - Create</title>
     <link rel="stylesheet" href="/public/global.css">
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="/public/pollstyle.css">
@@ -58,7 +58,10 @@
             attachRemoveListener(newOptionItem);
         }
 
-        addOptionButton.addEventListener('click', addOption);
+        addOptionButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            addOption();
+        });
         addOptionInput.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -73,6 +76,22 @@
             removeButton.addEventListener('click', function () {
                 optionItem.remove();
             });
+        }
+
+        const form = document.getElementById('poll-container');
+
+        form.onsubmit = (e) => {
+            if (document.getElementById('poll-title').value.trim() === '') {
+                e.preventDefault();
+                alert('Please enter a title');
+                return;
+            }
+            const optionsContainer = document.getElementById('options-container');
+            if (optionsContainer.children.length < 2) {
+                e.preventDefault();
+                alert('Please enter at least 2 options');
+                return;
+            }
         }
 
         feather.replace();

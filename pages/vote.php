@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BallotBox - Vote</title>
     <link rel="stylesheet" href="/public/global.css">
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="/public/votestyle.css">
@@ -14,13 +14,23 @@
     <?php
     require_once __DIR__ . '/navbar.php';
     require_once 'includes/dbh.inc.php';
+
+    
     if(!isset($_GET['poll'])){
         header('Location: /');
         exit();
     }
     $poll_id = $_GET['poll'];
     $poll = getPoll($pdo, $poll_id);
+    
     if(!$poll){
+        header('Location: /');
+        exit();
+    }
+
+    $user_id = $_SESSION['user_id'];
+
+    if(hasVoted($pdo, $poll_id, $user_id)){
         header('Location: /');
         exit();
     }

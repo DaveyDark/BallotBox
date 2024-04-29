@@ -18,6 +18,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: /');
     } else {
         http_response_code(401);
-        header('Location: /login');
+        header('Location: /login?error=invalidCredentials');
     }
 }
