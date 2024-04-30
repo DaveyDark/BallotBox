@@ -10,7 +10,7 @@ VALUES
 
 
 INSERT INTO boxes (user_id, name) 
-VALUES (2, 'Election');
+VALUES (1, 'Election');
 
 INSERT INTO ballots (box_id, name) 
 VALUES 
